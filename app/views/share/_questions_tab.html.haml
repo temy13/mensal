@@ -1,0 +1,21 @@
+- if questions.present?
+  %div.questions
+    %ul.question-list
+      - questions.each_with_index do |question, i|
+        %li.question-item.question-item-li
+          = link_to(question_path(question), class: '') do
+            -# = image_tag "OG_pattern01.jpg", {:class => "question-bg"}
+            %div.question-item-main
+              %div.question-item-main-content.flexiblebox
+                = question.content
+            %div.question-item-footer.row
+              %div.question-item-footer-left.col-4
+              %div.question-item-footer-center.col-4
+                - if question.answers.length > 0
+                  = image_tag "communication-4.png", class: "img-base"
+                  = question.answers.length
+              %div.question-item-footer-right.col-4
+                = render 'share/username_post', obj: question, link: false
+    = paginate questions, :param_name => page_name, :params => {:page => page_name}#, remote: true
+- else
+  = "まだ質問がありません"

@@ -1,0 +1,15 @@
+- if answer.is_anonymous || answer.user.answer_bot?
+  %div.answer-header.row
+    %div.col-3
+      %div.answer-icon
+        = image_tag answer.user_icon
+    %div.answer-name.col-9
+      = answer.name_or_anonymous_post(15)
+- else
+  = link_to profile_path(answer.user) do
+    %div.answer-header.row
+      %div.col-3
+        %div.answer-icon
+          = image_tag answer.user_icon
+      %div.answer-name.col-9
+        = answer.name_or_anonymous_post(15)

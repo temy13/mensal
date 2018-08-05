@@ -1,0 +1,58 @@
+%div.question-show
+  %div#question.question-item
+    %div.question-item-main
+      %div.question-item-main-content.flexiblebox
+        = @question.content
+    %div.question-item-footer.row
+      %div.question-item-footer-left.col-4
+      %div.question-item-footer-center.col-4
+        - if @question.answers.length > 0
+          = image_tag "communication-4.png", class: "img-base"
+          = @question.answers.length
+      %div.question-item-footer-right.col-4
+        = render 'share/username_post', obj: @question, link: true
+
+  - if @answers.present?
+    %div.answers
+      %ul.answer-list
+        - @answers.each_with_index do |answer, i|
+          %li{class: "answer-item", id:"answer-#{answer.id}"}
+            = render 'answer_header', answer: answer
+            %div.answer-inner.row
+              %div.answer-item-left.col-1.col-lg-2
+              %div.answer-item-content.col-11.col-lg-10
+                %div.answer-content
+                  = simple_format(answer.content)
+
+            - if current_user.blank?
+              %div.answer-footer.row
+                %div.col-1.col-lg-2
+                %div.col-11.col-lg-10
+                  %i.fa.fa-heart-o.like= answer.likes.size
+            - elsif current_user.liked(answer)
+              %div{id:"answer-like-#{answer.id}", class: "answer-footer row"}
+                = render 'likes/todislike', answer: answer, user: current_user
+            - else
+              %div{id:"answer-like-#{answer.id}", class: "answer-footer row"}
+                = render 'likes/tolike', answer: answer, user: current_user
+
+      = paginate @answers
+  - else
+    %div.white-back.no-answer
+      %div.large= "まだ回答がありません"
+
+- if current_user.present?
+  = render 'questions/answer_form', answer: @answer, question: @question
+- else
+  = link_to "ログインして回答しよう", root_path
+
+
+:ruby
+  @page_title = "メンサル:"+@question.content
+  @seo_contents ="メンサル回答ページです。"
+  @seo_keywords = "メンサル, 回答投稿"
+
+
+-# = link_to 'Edit', edit_question_path(@question)
+-# \|
+-# = link_to 'Back', questions_path

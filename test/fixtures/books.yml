@@ -1,0 +1,34 @@
+# == Schema Information
+#
+# Table name: books
+#
+#  id                    :integer          not null, primary key
+#  title                 :string
+#  isbn10                :string
+#  isbn13                :string
+#  asin                  :string
+#  google_books_id       :string
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  subtitle              :string
+#  google_categories     :string
+#  rakuten_affiliate_url :string
+#  google_description    :string
+#  vector_json           :string
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  isbn10: MyString
+  isbn13: MyString
+  asin: MyString
+  google_books_id: MyString
+
+two:
+  title: MyString
+  isbn10: MyString
+  isbn13: MyString
+  asin: MyString
+  google_books_id: MyString

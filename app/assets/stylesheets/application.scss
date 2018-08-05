@@ -1,0 +1,1215 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *
+ */
+
+ @import "bootstrap";
+ @import "font-awesome";
+
+ @import "vars.scss";
+ @import "questions.scss";
+ @import "modal.scss";
+ @import "analysis.scss";
+ @import "answers.scss";
+ @import "owl.carousel.min.scss";
+ @import "owl.theme.default.scss";
+ @import "bootstrap-tagsinput.scss";
+//= require bootstrap
+//= require jquery-ui
+//= require jquery.tagsinput
+//= require_tree .
+
+// @font-face {
+//   font-family: 'Hannotate';
+//   src: font-url('hannotate-sc-regular.otf') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+.analyze{
+  p{
+    font-size: 24px;
+  }
+}
+
+.twitter-share{
+  text-align: center;
+  height: 80px;
+  margin-bottom: 16px;
+}
+
+.adsbygoogle{
+  margin: 0 auto;
+  text-align: center;
+}
+.ad-small{
+  // width: 600px;// 12.5 * $block;
+  width: 100%;
+  height: 100px;//4 * $block;
+  // @include screen($breakpoint-mobile, $breakpoint-tablet) {
+    // width: 375px;//8 * $block;
+  // }
+}
+.ad-large{
+  // width: 420px;// 8.75 * $block;
+  width: 100%;
+  height: 350px;
+  @include screen($breakpoint-mobile, $breakpoint-tablet) {
+    // width: 375px;//8 * $block;
+    height: 276px;
+  }
+}
+
+.ad-normal{
+  // width: 420px;// 8.75 * $block;
+  width: 100%;
+  height: 100px;
+}
+
+
+
+.padding-top-80{
+  padding-top: 80px;
+}
+
+.padding-top-5unit{
+  padding-top: $block * 5;
+}
+.padding-top-unit{
+  padding: $block 0;
+}
+
+
+.padding-tb-unit{
+  padding: $block 0;
+}
+
+
+.padding-bottom-unit{
+  padding-bottom: $block;
+}
+.padding-bottom-5unit{
+  padding-bottom: $block*5;
+}
+
+.margin-tb-16{
+  margin:$ws-sm 0;
+}
+
+.img-base{
+  max-width: 100%;
+    max-height: 100%;
+}
+
+.logo-text{
+  color: $blue;
+  a{
+    color: $blue;
+  }
+  h1{
+    background-image: image-url("bookrep_logo_notext.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    width: 100%;
+    font-weight: normal;
+    font-family: 'ヒラギノ丸ゴ Pro W4', 'Hiragino Maru Gothic Pro', hannotate SC, YuGothic, 'Yu Gothic', sans-serif;
+    //$breakpoint-tablet以上はcol-4が250で固定される
+    height: 220px * $logo-height / $logo-width;
+    line-height: 220px * $logo-height / $logo-width;
+    @include screen($breakpoint-mobile, $breakpoint-tablet) {
+      padding: 16px 0 32px 0;
+      height: auto;
+      line-height: auto;
+      font-size: 52px;
+    }
+
+  }
+  a:active{
+    text-decoration: none;
+  }
+}
+
+.pagination{
+  text-align: center;
+  a{
+    color: $font-color;
+  }
+  ul{
+    padding:0;
+    margin: 0 auto;
+    li{
+      list-style-type: none;
+      // background-color: #222222;
+      display: inline-block;
+      // width: 25%;
+    }
+    .current{
+      font-weight: bold;
+    }
+  }
+}
+.disabled{
+  // color: #aaaaaa;
+  pointer-events: none;
+  position: relative;
+   cursor: not-allowed;
+   opacity: 0.5;
+   .fade{
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     top:0;
+     left:0;
+     background-color: #999;
+     opacity: 0.9;
+   }
+}
+
+.errors{
+  li{
+    list-style-type: none;
+  }
+}
+
+html, body, {
+  position:relative;
+  height:100%;
+  width:100%;
+  margin:0;
+  background-color: $bg-color;
+  .tooltip .tooltip-inner{
+    background-color: $blue;
+    max-width: $block*10;
+    font-size: $font-size-sm;
+  }
+
+}
+
+.header{
+  background-color: $white;
+  height: $block*2;
+  @include screen($breakpoint-mobile, $breakpoint-tablet) {
+    height: $block*3.5;
+  }
+  .header-button{
+    height: $block*1.5;
+    line-height: $block*1.5;
+    font-size: $font-size-sm * 2/3;
+    @include screen($breakpoint-mobile, $breakpoint-tablet) {
+      height: $block*2;
+      line-height: $block*2;
+      font-size: $font-size-sm;
+    }
+    // border: $blue 2px solid;
+    padding: 0 8px;
+    border-radius: 24px;
+    display: inline-block;
+      // height: $block*4 * 609 / 1784;
+      // line-height: $block*4 * 609 / 1784;
+      // @include screen($breakpoint-mobile, $breakpoint-tablet) {
+      //   height: $block*8 * 609 / 1784;
+      //   line-height: $block*8 * 609 / 1784;
+      // }
+    a:hover{
+      text-decoration: none;
+    }
+  }
+}
+
+nav{
+  //height: $block;
+  padding-top: $ws-sm;
+  position:relative;
+  height:100%;
+  @include screen($breakpoint-mobile, $breakpoint-tablet) {
+    padding-top: $ws-lg;
+  }
+  .logo{
+    //height: 100%;
+    // width: $block*4;
+    // @include screen($breakpoint-mobile, $breakpoint-tablet) {
+    //   width: $block*8;
+    // }
+    margin: 0 auto;
+    img{
+      width:100%;
+      //height: 100%;
+    }
+  }
+  .right{
+    text-align: center;
+  //   // position: absolute;
+  //   // right:$ws-sm;
+  //   // top: $ws-lg;
+  //   height: $block*4 * 609 / 1784;
+  //   line-height: $block*4 * 609 / 1784;
+  //   // @include screen($breakpoint-mobile, $breakpoint-tablet) {
+  //   //   height: $block*8 * 609 / 1784;
+  //   //   line-height: $block*8 * 609 / 1784;
+  }
+  //
+  // }
+}
+.max-height{
+  min-height:100%;
+}
+
+#center{
+  display: block;
+  max-width: $Width; //48*13
+  margin: 0 auto;
+  color: $font-color;
+  font-size: $font-size-lg;
+  height: 100%;
+  max-height: 100%;
+  position: relative;
+  @include screen($breakpoint-mobile, $breakpoint-tablet) {
+    max-width: 100%;
+  }
+}
+
+.container{
+  @include screen($breakpoint-mobile, $breakpoint-tablet) {
+    max-width: 100%;
+  }
+}
+
+.top{
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+
+  .top-cover{
+  color: $blue;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 90%;
+  height: 90%;
+  border-radius: 48px;
+  }
+  .top-cover-bg{
+    position: absolute;
+    background-color: white;
+    opacity: 0.9;
+    height: 100%;
+    width: 100%;
+    border-radius: 48px;
+  }
+  .top-cover-contents{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: $ws-lg;
+    .top-cover-text{
+      // height:30%;
+      font-size: $block;
+      @include screen($breakpoint-mobile, $breakpoint-tablet) {
+        font-size: 52px;
+      }
+      p{
+        margin:0;
+      }
+    }
+    .top-cover-image{
+      height:60%;
+      img{
+        max-height:100%;
+        max-width:100%;
+        display: inline-block;
+        width: auto;
+      }
+    }
+  }
+}
+
+.top-image{
+  width: 100%;
+  position: relative;
+}
+
+.icons-separation{
+  padding-bottom: 32px;
+  .icons-separation-icons{
+    width: 50%;
+    @include screen($breakpoint-mobile, $breakpoint-tablet) {
+      width: 30%;
+    }
+    margin: $ws-lg 0;
+    margin: 0 auto;
+    height: $block*2;
+  }
+  img{
+    max-width: 25%;
+    max-height: 100%;
+    display: inline-block;
+  }
+  .mr{
+    margin-right:10%;
+  }
+}
+
+
+.top-sub-title{
+  width: 100%;
+  padding-top: $ws-md;
+  text-align: center;
+  font-size: $block;
+  color: $blue;
+}
+
+.using{
+  max-width: 100%;
+  padding: $ws-lg $ws-sm;
+  font-size: $font-size-sm;
+  margin: 0;
+  @include screen($breakpoint-mobile, $breakpoint-tablet) {
+    // padding: $ws-lg $block;
+    padding: $ws-lg $block;
+    font-size: 40px;
+  }
+  display: flex;
+	align-items: center;
+
+  img{
+    max-width: 100%;
+    max-height: 100%;
+  }
+  p{
+    margin:0;
+  }
+}
+
+.able{
+  // padding: $ws-lg $block;
+  margin-top: $block;
+  text-align: center;
+  // height: $block*11;
+  font-size: $font-size-sm;
+  @include screen($breakpoint-mobile, $breakpoint-tablet) {
+    font-size: 40px;
+  }
+
+  .able-img{
+    // width: 80%;
+    // height: 75%;
+    margin:0 auto;
+  }
+  p{
+    margin:0;
+  }
+  img{
+    // max-width: 100%;
+    max-height: 100%;
+    max-width: 700px;
+    @include screen($breakpoint-mobile, $breakpoint-tablet) {
+      max-width: 750px;
+    }
+  }
+  .able-txt{
+    margin-top: $ws-md;
+  }
+}
+
+/** top **/
+
+.top-profile{
+  min-height: $block*8;
+max-height: $block*13;
+overflow: scroll;
+}
+
+.top-inputs{
+  padding: 0 16px;
+  .twitter-login{
+    .blue{
+      line-height: 78px;
+    }
+  }
+  // .explain{
+  //   font-size: 24px;
+  //   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  //   text-align: center;
+  //   .large{
+  //     margin-top: $ws-md;
+  //     font-size: $block;
+  //     margin-bottom: $ws-md;
+  //   }
+  //   .bottom{
+  //     width: 340px;
+  //     margin: $ws-sm auto 0;
+  //   }
+  // }
+}
+
+.question-top-image{
+  // top: -8px;
+  // position: absolute;
+  width: 100%;
+}
+
+//todo merge
+.top-content{
+  position: absolute;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    /* bottom: 5px; */
+    top: 250px;
+}
+
+// .question-top{
+//   height:$block*13;
+// }
+
+.top-question-text{
+  position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    text-align: center;
+    color: white;
+    font-size: $font-size-lg;
+    border:white 4px solid;
+    background-color: rgba( 255, 255, 255, 0 );
+    font-weight: bold;
+    padding: $block*2 0;
+
+    @include screen($breakpoint-mobile, $breakpoint-tablet) {
+      font-size: $block;
+    }
+}
+
+// .top-question-show-content{
+//   margin:$ws-sm $ws-sm 0;
+//   min-height:$block7;
+//   font-family: hannotate SC;
+//
+//   margin:$ws-sm $ws-md 0;
+//   background-color:$white;
+//   text-align: center;
+// }
+// .top-question-show-content-text{
+//   width: 300px;
+//   height: 150px;
+//   margin: 0 auto;
+// }
+
+.no-answer{
+  color: $blue;
+  text-align: center;
+  padding: $block;
+  margin-bottom:$block2;
+  .large{
+    font-size:$block;
+  }
+  .middle{
+    // width:$block7;
+    margin:0 auto;
+    p{
+      margin:0;
+    }
+  }
+}
+
+
+
+.top-question-show-footer{
+  position: relative;
+  color: white;
+  min-height: 48px;
+overflow: visible;
+    padding: $ws-sm;
+
+}
+
+
+.middle-content{
+  text-align: center;
+  font-size: 35px;
+  .middle-third{
+    font-size: 40px;
+  }
+}
+
+
+.btn-base{
+  width: 100%;
+    margin: 10px 0px $half-block 0px;
+    height:$block2;
+    color:white;
+    font-size: $font-size-lg;
+}
+
+
+.login-input-field{
+  width:100%;
+  background-color:$white;
+  border-color:$gray;
+  height:$block2;
+  margin-top:$ws-md;
+}
+
+input, textarea{
+  border-radius: 10px;
+  @include screen($breakpoint-mobile, $breakpoint-tablet) {
+    font-size: $font-size-lg * 1.5;
+  }
+
+  // transform: scale(0.8);
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+.forgot-password{
+  text-align: center;
+}
+
+.input-question{
+  width: 100%;
+  background-color: $bg-color;
+  height: $block8;
+}
+
+.tweet{
+  position: relative;
+}
+
+
+.font-sm{
+  font-size: 24px;
+}
+
+$icon-length: $block2;
+.profile-icon{
+  width:$icon-length;
+  height:$icon-length;
+  border-radius:$icon-length;
+  border: 1px solid transparent;
+  overflow: hidden;
+  margin:0 auto;
+  img{
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+}
+// .title-tag:after{
+//   content: "✖︎"
+// }
+
+
+
+
+
+.top-profile{
+  background: linear-gradient($blue, #76CFFA);
+  width:100%;
+  color: $white;
+  div{
+    margin:10px auto 0;
+    text-align: center
+  }
+  .profile-header{
+    font-size: $font-size-sm;
+    height: $ws-lg;
+    position: relative;
+  .profile-edit{
+      position: absolute;
+      right: 5%;
+      width: $block4;
+      a {
+          color: $white;
+      }
+      line-height: $block2;
+      height: $block2;
+      border: 1px $white solid;
+      border-radius: $ws-lg;
+    }
+  }
+  .profile-icon{
+    margin-top:$block2;
+  }
+
+}
+
+.profile-posts-title{
+  text-align: center;
+  border-bottom: $gray 2px solid;
+  .posts-title{
+    font-size: $font-size-lg;
+  }
+  .posts-content{
+    font-size: $font-size-sm;
+  }
+  background-color: white;
+  padding: $block 0;
+}
+
+.field, .form-inputs{
+  padding: 0 $ws-sm;
+  input{
+    padding: 0 $ws-sm;
+  }
+}
+
+.form-actions-margin{
+  margin: 0 $ws-sm;
+}
+
+.default-input-field{
+  width:100%;
+  background-color: $gray;
+  border-color: $gray;
+  height: $block*2;
+  border-width: 2px;
+  border-style: inset;
+  margin-top:$ws-md;
+}
+.default-input-textarea{
+  height:$block*6;
+}
+
+.footer{
+  padding-bottom:$block*3;
+  ul li{
+    list-style-type: none;
+    padding-bottom: 96px;
+    a{
+      color: $font-color;
+    }
+  }
+  .copyright{
+    text-align: center;
+    padding: $ws-sm 0;
+    p{
+      margin: 0;
+    }
+  }
+}
+
+#fix-footer{
+  z-index:100;
+  background-color:tranparent;// $bg-color;
+  position:fixed;
+  width:100%;
+  height:$block  * 3;
+  // @include screen($breakpoint-mobile, $breakpoint-tablet) {
+  //   height: $block*3;
+  // }
+  bottom:0;
+  text-align:center;
+  overflow:hidden;
+  .footer-center{
+    margin: 0 auto;
+    max-width: $Width;
+    @include screen($breakpoint-mobile, $breakpoint-tablet) {
+      max-width: 100%;
+    }
+  }
+  .footer-icons{
+    img{
+      height: $block*2;
+    }
+    .footer-item{
+      text-align: center;
+    }
+  }
+}
+
+/* common */
+
+.tab{
+  color: $font-color;
+  overflow:hidden;
+  padding:0;
+  margin: 0;
+  //margin:0 $ws-md !important;
+  li{
+    list-style-type: none;
+    background:white;
+    padding:5px 25px;
+    float:left;
+    line-height: $block2;
+    height: $block2;
+    font-size: 35px;
+    text-align: center;
+  }
+  li.select{
+      border-bottom: 6px $blue solid;
+    }
+  }
+  .tab-contents{
+    padding:0;
+    //margin:0 16px;
+    margin: 0;
+  }
+.tab-contents-item{
+  list-style-type: none;
+
+}
+.hide {display:none;}
+
+.flexiblebox {
+ display: -webkit-flex;
+ display: flex;
+ -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+ align-items: center; /* 縦方向中央揃え */
+ -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+ justify-content: center; /* 横方向中央揃え */
+}
+
+.table-cell {
+ display: table-cell; /* IE8から使用可能 */
+ vertical-align: middle;
+}
+
+.blue{
+  background-color: $blue;
+  border-color: $blue;
+}
+
+.orange{
+  background-color: $orange;
+  border-color: $orange;
+}
+
+
+.black{
+  color: white;
+  background-color: $font-color;
+  border-color: $font-color;
+}
+
+
+
+/* auto-complete */
+.ui-helper-hidden-accessible { display:none; }
+.ui-menu{
+  z-index:10;
+  padding:0;
+  .ui-menu-item{
+    margin:0 $ws-sm/2;
+    padding:$ws-sm 0;
+    list-style-type: none;
+    background-color:$gray;
+    // width: 100%;
+  }
+}
+
+.answer-name{
+  min-height: 36px;
+}
+
+
+
+.input-error, .error[input], textarea.error{
+  outline: 0;
+  border:solid 5px $red;
+}
+
+.error{
+  color: $red;
+}
+
+.normal-link{
+  text-align: center;
+  // padding:0 5px;
+  // background-color: $gray;
+  a{
+    color: $font-color;
+  }
+}
+
+
+
+.separate-bottom{
+  // margin-bottom: $block3;
+  border-bottom: $font-color 1px solid;
+}
+
+.bg-white{
+  background-color:white;
+}
+
+.bg-f8{
+  background-color: #F8F8F8;
+}
+
+.white-back{
+  position: relative;
+  background-color:white;
+  padding: $ws-lg 0 0;
+  .separate{
+    padding: $ws-sm $ws-lg;
+    min-height: $block3;
+    line-height: 132px;//$block3;
+    border-top: $font-color 1px solid;
+    margin:0;
+  }
+
+}
+
+.actions-group{
+  margin-top: $block3;
+}
+
+.padding-bottom{
+  padding-bottom: $ws-lg;
+}
+
+// .label-info {
+//     background-color: #5bc0de;
+// }
+
+@-webkit-keyframes slideUp {
+    // 0%, 100% { -webkit-transform: translateY(-50px); }
+    // 10%, 90% { -webkit-transform: translateY(0px); }
+    0% { -webkit-transform: translateY(0px); }
+    50% { -webkit-transform: translateY(0px); }
+    //100% { -webkit-transform: translateY(0px); }
+    100% { -webkit-transform: translateY(-300px); }
+}
+@-moz-keyframes slideUp {
+    // 0%, 100% { -moz-transform: translateY(-50px); }
+    // 10%, 90% { -moz-transform: translateY(0px); }
+    0% { -webkit-transform: translateY(0px); }
+    50% { -webkit-transform: translateY(0px); }
+    //100% { -webkit-transform: translateY(0px); }
+    100% { -webkit-transform: translateY(-300px); }
+}
+
+.notice {
+    font-size: $font-size-sm;
+    width:100%;
+    position: absolute;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    right: 0;
+    color:white;
+    text-align: center;
+    line-height: 4.0;
+    overflow: hidden;
+    -webkit-box-shadow: 0 0 5px white;
+    -moz-box-shadow:    0 0 5px white;
+    box-shadow:         0 0 5px white;
+    padding: 0 $ws-lg;
+    a{
+      color:white;
+      text-decoration: none;
+    }
+    a#notice-close{
+      position: absolute;
+      top: 8px;
+      right: 100px;
+    }
+}
+
+.notice.notice-big{
+  font-size: 32px;
+  line-height: 6.0;
+}
+
+.slide-normal{
+  -webkit-animation: slideUp 3.5s 0s 1 ease-in forwards;
+  -moz-animation:    slideUp 3.5s 0s 1 ease-in forwards;
+}
+
+.slide-slow{
+  -webkit-animation: slideUp 10s 0s 1 ease-in forwards;
+  -moz-animation:    slideUp 10s 0s 1 ease-in forwards;
+}
+
+
+.bg-blue{
+  background-color: $blue;
+}
+
+.bg-red{
+  background-color: $red;
+}
+
+// .cssanimations.csstransforms #notice-close {
+//   display: none;
+// }
+
+.actions{
+  padding:0 $ws-md;
+}
+
+.padding-zero{
+  padding: 0;
+}
+
+.mail-login-link{
+  padding-top: $ws-sm;
+  padding-bottom: $block;
+}
+
+.height-block3{
+  height: $block*3;
+}
+
+.question-circle{
+    // height: 100%;
+    text-align: center;
+    position: relative;
+    img{
+      max-height: 100%;
+      max-width: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      @include screen($breakpoint-mobile, $breakpoint-tablet) {
+        max-height: 50%;
+        max-width: 50%;
+      }
+    }
+}
+
+#request-users-tags{
+  line-height: 0;
+  width: 100%;
+  // display: none;
+  // height: $block;
+  .tag{
+    color: white;
+    display: inline-block;
+    background-color: $blue;
+    line-height: 24px;
+    padding: 4px;
+    font-size: 24px;
+    border-radius: 8px;
+    margin-left: 4px;
+    margin-bottom: 4px;
+  }
+  .tag-remove{
+    display: inline;
+    font-size: 20px;
+    vertical-align: bottom;
+    line-height: 12px;
+    padding: 0 2px;
+  }
+  // .tag-remove:after{
+  //   content: "x";
+  // }
+
+}
+
+.input-title{
+  margin-bottom: $ws-lg;
+  min-height: $block2;
+  line-height: $block2;
+}
+
+.option-search{
+  // height: $block*2;
+  img{
+    max-width:100%;
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+}
+
+
+.invition-qs{
+  position: absolute;
+  color: $white;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  width: 90%;
+  padding:$block;
+  // border: $blue 3px solid;
+  border-radius: $block;
+  text-align: center;
+  background-color: rgba(128,128,128,0.7);
+  // .invition-qs-bg{
+  //   background: white;
+  //   opacity: 0.3;
+  //   height: 100%;
+  //   width: 100%;
+  // }
+  .invition-qs-txt{
+    // font-size: $fon;
+    @include screen($breakpoint-mobile, $breakpoint-tablet) {
+      font-size: $block;
+    }
+  }
+  .invition-buttons{
+    margin-top:10%;
+    @include screen($breakpoint-mobile, $breakpoint-tablet) {
+      margin-top:5%;
+    }
+    .blue, .orange{
+      line-height: 78px;
+      color: white;
+      a{
+        color: white;
+      }
+    }
+  }
+
+}
+
+.invition-qs-a{
+  height: 40%;
+}
+.invition-qs-q{
+  height: 60%;
+}
+
+.mt2b{
+  margin-top: $block*2;
+}
+
+.mtb{
+  margin-top: $block;
+}
+
+
+/* questions */
+.question-item{
+  list-style-type: none;
+  padding: $ws-sm;
+  width: 100%;
+  position: relative;
+  background-color: $blue;
+  color: $white;
+  margin-bottom: $ws-md;
+  a, a:hover{
+    text-decoration: none;
+  }
+  .question-bg{
+    width: 100%;
+    height:100%;
+    position:absolute;
+    margin:0 auto;
+  }
+}
+.question-item-li:hover{
+  opacity: 0.8;
+}
+.question-item-main{
+  // background-image: image-url("question_image_whitever1.png");
+  // background-repeat: no-repeat;
+  //   background-size: cover;
+  background: white;
+  width:100%;
+  // margin:0 $ws-sm;
+  height:$block*6;
+  @include screen($breakpoint-mobile, $breakpoint-tablet) {
+    height:$block*10;
+  }
+  color: $font-color;
+  //background-color: $white;
+  padding: $ws-sm;
+  //font-family: 'Hannotate', hannotate SC, YuGothic, 'Yu Gothic', sans-serif;
+  font-family: 'ヒラギノ丸ゴ Pro W4', 'Hiragino Maru Gothic Pro', hannotate SC, YuGothic, 'Yu Gothic', sans-serif;
+  //font-family: 'Hannotate';
+  word-break: break-all;
+    overflow: hidden;
+    .question-item-main-content{
+      overflow: scroll;
+      width: 100%;
+      height: 100%;
+      @include screen($breakpoint-mobile, $breakpoint-tablet) {
+        font-size: 40px;
+      }
+
+    }
+}
+
+.question-item-footer{
+  // position: absolute;
+  // bottom:0;
+  width:100%;
+  color: white;
+  padding: 0px $ws-sm;
+  // min-height: 48px;
+  height:$block;
+  overflow: hidden;
+  // overflow: visible;
+
+  a{
+    color: white;
+  }
+  div{
+    display: inline-block;
+    // width: 45%;
+    padding: $ws-sm;
+    font-size: $font-size-sm;
+  }
+  .question-item-footer-left{
+    text-align: left;
+    img{
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  .question-item-footer-right{
+    text-align: right;
+  }
+
+  .question-item-footer-center{
+    text-align: center;
+  }
+}
+
+
+.page-box{
+  min-width: $block*1.5;
+}
+
+.page-style{
+  min-height: $block*1.5;
+  line-height: $block*1.5;
+  font-size: $font-size-sm;
+  background-color: white;
+  text-align: center;
+  border: $font-color 1px solid;
+}
+.page-text{
+  min-width: $block*2.5;
+}
+
+.page-style.current{
+    background-color: $blue;
+    border-color: white;
+    color: $white;
+}

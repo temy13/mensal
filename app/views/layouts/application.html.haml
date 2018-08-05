@@ -1,0 +1,137 @@
+!!!
+%html
+  %head
+    -# %script{:async => "", :type => 'text/javascript', :src => 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'}
+    -# -# %script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    -# :javascript
+    -#   (adsbygoogle = window.adsbygoogle || []).push({
+    -#     google_ad_client: "ca-pub-5106796650047961",
+    -#     enable_page_level_ads: true
+    -#   });
+    -#
+    -# %script{:src=>"https://www.gstatic.com/firebasejs/4.12.1/firebase.js"}
+    -# %script{:async => "", :charset => "utf-8", :src => "https://platform.twitter.com/widgets.js"}
+    -# %script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    -#
+    -# :coffee
+    -#   (adsbygoogle = window.adsbygoogle or []).push
+    -#     google_ad_client: "ca-pub-6030595513792321"
+    -#     enable_page_level_ads: true
+
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title=get_title
+    -# %meta{:name => "keywords", :content => get_seo_keywords}
+    -# %meta{:name => "description", :content => get_seo_contents}
+    -# %meta{:content => "width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no", :name => "viewport"}
+
+    -# %meta{:name=> "google-site-verification", :content=>"3bZJgP5cGEIC9kwyAy9vZ39pYlMrxN5QvLM0roER9Fo"}
+
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = include_gon
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = analytics_init if Rails.env.production?
+    %link{ rel:  "stylesheet", href: "https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" }
+    %script{ type: 'text/javascript', src: 'https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js'}
+    %link{:href => "/manifest.json", :rel => "manifest"}
+    -# %meta{:name => "twitter:card", :content=>"summary_large_image"}
+    -# %meta{:name => "twitter:site", :content=>"@bookreptokyo"}
+    -# %meta{:property => "og:url", :content=>ENV["SERVICE_HOST"] + request.path_info}
+    -# %meta{:property => "og:site_name", :content=>"メンサル"}
+    -# %meta{:property => "fb:app_id", :content=>"1711404418949910"}
+    -# %meta{:property => "article:publisher", :content=>"https://www.facebook.com/bookreptokyo/"}
+
+    -# - if @question.present? && @question.try(:id).present?  && @question.try(:content).present? && @question.try(:image_url).present?
+    -#   %meta{:property => "og:title", :content=>@question.content}
+    -#   %meta{:property => "og:description", :content=>@question.content}
+    -#   %meta{:property => "og:image", :content=>ENV["SERVICE_HOST"] + @question.image.sns.url}
+    -# - else
+    -#   %meta{:property => "og:title", :content=>get_title}
+    -#   %meta{:property => "og:description", :content=>get_seo_contents}
+    -#   %meta{:property => "og:image", :content=>ENV["SERVICE_HOST"] + image_path("top_image_large.png")}
+    -#
+    -# - if request.path_info == root_path
+    -#   %meta{:property => "og:type", :content=>"website"}
+    -# - else
+    -#   %meta{:property => "og:type", :content=>"article"}
+
+
+  %body
+    - if notice
+      - if flash[:notice_link]
+        %div.notice.bg-blue.notice-big.slide-slow
+          = link_to notice, flash[:notice_link]
+          -# = notice
+          %a#notice-close= "×"
+      - else
+        %div.notice.bg-blue.slide-normal
+          = notice
+          %a#notice-close= "×"
+    - if alert
+      - if flash[:notice_link]
+        %div.notice.bg-red.notice-big.slide-slow
+          = link_to alert, flash[:notice_link]
+      - else
+        %div.notice.bg-red.slide-normal
+          = alert
+          %a#notice-close= "×"
+
+    %div.container.max-height
+      %div.row.max-height
+        %div.d-lg-block.col-lg-2.d-none
+        %div.col-12.col-lg-8.max-height.padding-zero
+          %div#center.max-height
+            %div.header
+              %nav.row
+                %div.col-4
+                %div.logo.col-4.text-center
+                  -# =render "share/logo"
+                  = "メンサル"
+                %div.d-inline-block.right.col-4
+                - if user_signed_in?
+                  %div.header-button
+                    = link_to 'ログアウト', destroy_user_session_path, method: :delete
+                - else
+                  %div.header-button
+                    -# = link_to user_twitter_omniauth_authorize_path do
+                    -#   ="登録/ログイン"
+
+            %div#main-contents.max-height
+              = yield
+
+            %div.footer
+              %ul
+                %li= link_to "プライバシーポリシー", home_policy_path
+                %li= link_to "利用規約", home_terms_path
+                %li= link_to "ご意見・ご感想・ご要望・お問い合わせ", contacts_new_path
+                %li= link_to "質問一覧", questions_path
+                %li.copyright
+                  %p= "© 2018 hogehoge"
+
+    %div#fix-footer
+      %div.container
+        %div.row
+          %div.d-lg-block.col-lg-2.d-none
+          %div.col-sm-12.col-lg-8.bg-f8
+            %div.footer-icons.footer-center.row
+              %div.footer-item.col-4
+                - if request.path_info == new_question_path
+                  -# = link_to image_tag('blue_icon_post.png', { :border => '0', :alt => '質問投稿'}), new_question_path
+                  =image_tag('blue_icon_post.png', { :border => '0', :alt => '質問投稿'})
+                - else
+                  = link_to image_tag('icon_post.png', { :border => '0', :alt => '質問投稿'}), new_question_path
+              %div.footer-item.col-4
+                - if request.path_info == questions_path
+                  -# = link_to image_tag('blue_icon_home.png', { :border => '0', :alt => '質問一覧'}), questions_path
+                  =image_tag('blue_icon_home.png', { :border => '0', :alt => '質問投稿'})
+                - else
+                  = link_to image_tag('icon_home.png', { :border => '0', :alt => '質問一覧'}), questions_path
+              %div.footer-item.col-4
+                - if user_signed_in?
+                  - if request.path_info == profile_path(current_user)
+                    -# = link_to image_tag('blue_icon_profile.png', { :border => '0', :alt => 'プロフィール'}), profile_path(current_user)
+                    =image_tag('blue_icon_profile.png', { :border => '0', :alt => '質問投稿'})
+                  - else
+                    = link_to image_tag('icon_profile.png', { :border => '0', :alt => 'プロフィール'}), profile_path(current_user)
+
+        %div.d-lg-block.col-lg-2.d-none

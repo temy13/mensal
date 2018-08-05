@@ -1,0 +1,16 @@
+
+- if current_user.present?
+  = render 'questions/form', question: @question
+- else
+  = link_to "ログインして質問しよう", root_path
+
+
+:ruby
+  @page_title = "メンサル:質問する"
+  @seo_contents ="メンサル"
+  @seo_keywords ="メンサル,質問"
+
+
+-# = render 'form'
+
+-# = link_to 'Back', questions_path

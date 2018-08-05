@@ -1,0 +1,2 @@
+module Mecha::TopHelper
+end

@@ -1,0 +1,18 @@
+= form_for answer,  html: {id: 'answer_form', class: 'form' }  do |f|
+  %div.white-back
+    - if answer.errors.any?
+      #error_explanation
+        -# %h2= "#{pluralize(@answer.errors.count, "error")} prohibited this answer from being saved:"
+        %ul
+          - @answer.errors.full_messages.each do |message|
+            %li= message
+    .field
+      = f.text_area :content, required: true, :placeholder => "ここに回答だよ", :class=> "input-answer input-question", :id =>"answer-content-input"
+      = f.hidden_field :user_id, :value => current_user.try(:id)
+      = f.hidden_field :question_id, :value => question.id
+
+  .actions-group.padding-bottom-unit
+    .actions
+      = f.submit 'ユーザ名で投稿', class: "btn blue btn-base", name: "normal",id: "post-by-account"
+    .actions
+      = f.submit '匿名で投稿', class: "btn orange btn-base answer-submit", name: "anonymous", id: "post-by-anonymous"

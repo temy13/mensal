@@ -1,0 +1,16 @@
+= form_for question do |f|
+  %div.white-back
+    - if @question.errors.any?
+      #error_explanation
+        %h2.error= "#{pluralize(question.errors.count, "件")} のエラーが発生しました"
+        %ul.list-group
+          - @question.errors.full_messages.each do |message|
+            %li.list-group-item.list-group-item-danger= message
+
+    .field
+      = f.text_area :content, required: true, :placeholder => "質問の例だよ", :class=> "input-question"
+      = f.hidden_field :user_id, :value => current_user.try(:id)
+    .actions
+      = f.submit 'ユーザ名で投稿', id: "post-by-account", class: "btn blue btn-base", name: "normal"
+    .actions
+      = f.submit '匿名で投稿', id: "post-by-anonymous", class: "btn orange btn-base", name: "anonymous", value: "匿名で投稿"
