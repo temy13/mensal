@@ -44,7 +44,7 @@ class User < ApplicationRecord
   has_many :action_logs
   has_many :push_notification
 
-  as_enum :states, normal: 0, dummy: 1, admin: 2, answer_bot: 3
+  as_enum :states, normal: 0, mensa: 1, admin: 2
 
 
   # before_save :prepare_save
