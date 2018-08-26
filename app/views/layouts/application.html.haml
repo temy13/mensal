@@ -84,54 +84,60 @@
             %div.header
               %nav.row
                 %div.col-4
-                %div.logo.col-4.text-center
-                  -# =render "share/logo"
-                  = "メンサル"
-                %div.d-inline-block.right.col-4
                 - if user_signed_in?
-                  %div.header-button
-                    = link_to 'ログアウト', destroy_user_session_path, method: :delete
+                  %div.logo.col-4
+                    =render "share/logo"
+                  %div.d-inline-block.right.col-4
+                    %div.header-button
+                      = link_to 'ログアウト', destroy_user_session_path, method: :delete
                 - else
-                  %div.header-button
-                    -# = link_to user_twitter_omniauth_authorize_path do
-                    -#   ="登録/ログイン"
+                  %div.logo.col-4
+                    =render "share/logo"
+                  %div.d-inline-block.right.col-4
+                    %div.header-button
+                      = link_to user_twitter_omniauth_authorize_path do
+                        %i.fa.fa-twitter="登録/ログイン"
 
             %div#main-contents.max-height
               = yield
 
             %div.footer
               %ul
+                %li
+                  = link_to "https://twitter.com/bookreptokyo" do
+                    %i.fa.fa-twitter="公式Twitter"
                 %li= link_to "プライバシーポリシー", home_policy_path
                 %li= link_to "利用規約", home_terms_path
                 %li= link_to "ご意見・ご感想・ご要望・お問い合わせ", contacts_new_path
                 %li= link_to "質問一覧", questions_path
                 %li.copyright
-                  %p= "© 2018 hogehoge"
-
-    %div#fix-footer
-      %div.container
-        %div.row
-          %div.d-lg-block.col-lg-2.d-none
-          %div.col-sm-12.col-lg-8.bg-f8
-            %div.footer-icons.footer-center.row
-              %div.footer-item.col-4
-                - if request.path_info == new_question_path
-                  -# = link_to image_tag('blue_icon_post.png', { :border => '0', :alt => '質問投稿'}), new_question_path
-                  =image_tag('blue_icon_post.png', { :border => '0', :alt => '質問投稿'})
-                - else
-                  = link_to image_tag('icon_post.png', { :border => '0', :alt => '質問投稿'}), new_question_path
-              %div.footer-item.col-4
-                - if request.path_info == questions_path
-                  -# = link_to image_tag('blue_icon_home.png', { :border => '0', :alt => '質問一覧'}), questions_path
-                  =image_tag('blue_icon_home.png', { :border => '0', :alt => '質問投稿'})
-                - else
-                  = link_to image_tag('icon_home.png', { :border => '0', :alt => '質問一覧'}), questions_path
-              %div.footer-item.col-4
-                - if user_signed_in?
-                  - if request.path_info == profile_path(current_user)
-                    -# = link_to image_tag('blue_icon_profile.png', { :border => '0', :alt => 'プロフィール'}), profile_path(current_user)
-                    =image_tag('blue_icon_profile.png', { :border => '0', :alt => '質問投稿'})
-                  - else
-                    = link_to image_tag('icon_profile.png', { :border => '0', :alt => 'プロフィール'}), profile_path(current_user)
+                  %p= "本との出会いに素敵な偶然を"
+                  %p= "© 2018 bookrep"
 
         %div.d-lg-block.col-lg-2.d-none
+
+        %div#fix-footer
+          %div.container
+            %div.row
+              %div.d-lg-block.col-lg-2.d-none
+              %div.col-sm-12.col-lg-8.bg-f8
+                %div.footer-icons.footer-center.row
+                  %div.footer-item.col-4
+                    - if request.path_info == new_question_path
+                      -# = link_to image_tag('blue_icon_post.png', { :border => '0', :alt => '質問投稿'}), new_question_path
+                      =image_tag('blue_icon_post.png', { :border => '0', :alt => '質問投稿'})
+                    - else
+                      = link_to image_tag('icon_post.png', { :border => '0', :alt => '質問投稿'}), new_question_path
+                  %div.footer-item.col-4
+                    - if request.path_info == questions_path
+                      -# = link_to image_tag('blue_icon_home.png', { :border => '0', :alt => '質問一覧'}), questions_path
+                      =image_tag('blue_icon_home.png', { :border => '0', :alt => '質問投稿'})
+                    - else
+                      = link_to image_tag('icon_home.png', { :border => '0', :alt => '質問一覧'}), questions_path
+                  %div.footer-item.col-4
+                    - if user_signed_in?
+                      - if request.path_info == profile_path(current_user)
+                        -# = link_to image_tag('blue_icon_profile.png', { :border => '0', :alt => 'プロフィール'}), profile_path(current_user)
+                        =image_tag('blue_icon_profile.png', { :border => '0', :alt => '質問投稿'})
+                      - else
+                        = link_to image_tag('icon_profile.png', { :border => '0', :alt => 'プロフィール'}), profile_path(current_user)

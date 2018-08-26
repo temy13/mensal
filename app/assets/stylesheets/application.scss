@@ -717,7 +717,7 @@ $icon-length: $block2;
   background-color:tranparent;// $bg-color;
   position:fixed;
   width:100%;
-  height:$block  * 3;
+  height:auto;//$block  * 3;
   // @include screen($breakpoint-mobile, $breakpoint-tablet) {
   //   height: $block*3;
   // }
