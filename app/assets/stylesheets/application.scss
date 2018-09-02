@@ -113,27 +113,31 @@
 }
 
 .logo-text{
+
   color: $blue;
   a{
     color: $blue;
   }
   h1{
-    background-image: image-url("bookrep_logo_notext.png");
+    // width: 200px;
+    margin: 0 auto;
+    font-size:1.8rem;
+    background-image: image-url("logo_notext.png");
     background-size: contain;
     background-repeat: no-repeat;
     text-align: center;
-    width: 100%;
+    // width: 100%;
     font-weight: normal;
     font-family: 'ヒラギノ丸ゴ Pro W4', 'Hiragino Maru Gothic Pro', hannotate SC, YuGothic, 'Yu Gothic', sans-serif;
     //$breakpoint-tablet以上はcol-4が250で固定される
     height: 220px * $logo-height / $logo-width;
     line-height: 220px * $logo-height / $logo-width;
-    @include screen($breakpoint-mobile, $breakpoint-tablet) {
-      padding: 16px 0 32px 0;
-      height: auto;
-      line-height: auto;
-      font-size: 52px;
-    }
+    // @include screen($breakpoint-mobile, $breakpoint-tablet) {
+    //   padding: 16px 0 32px 0;
+    //   height: auto;
+    //   line-height: auto;
+    //   font-size: 52px;
+    // }
 
   }
   a:active{
@@ -199,19 +203,19 @@ html, body, {
 
 .header{
   background-color: $white;
-  height: $block*2;
+  height: $block*6;
   @include screen($breakpoint-mobile, $breakpoint-tablet) {
-    height: $block*3.5;
+    height: $block*8;
   }
   .header-button{
     height: $block*1.5;
     line-height: $block*1.5;
     font-size: $font-size-sm * 2/3;
-    @include screen($breakpoint-mobile, $breakpoint-tablet) {
-      height: $block*2;
-      line-height: $block*2;
-      font-size: $font-size-sm;
-    }
+    // @include screen($breakpoint-mobile, $breakpoint-tablet) {
+    //   height: $block*2;
+    //   line-height: $block*2;
+    //   font-size: $font-size-sm;
+    // }
     // border: $blue 2px solid;
     padding: 0 8px;
     border-radius: 24px;
@@ -233,9 +237,9 @@ nav{
   padding-top: $ws-sm;
   position:relative;
   height:100%;
-  @include screen($breakpoint-mobile, $breakpoint-tablet) {
-    padding-top: $ws-lg;
-  }
+  // @include screen($breakpoint-mobile, $breakpoint-tablet) {
+  //   padding-top: $ws-lg;
+  // }
   .logo{
     //height: 100%;
     // width: $block*4;
@@ -1106,10 +1110,10 @@ $icon-length: $block2;
 /* questions */
 .question-item{
   list-style-type: none;
-  padding: $ws-sm;
+  // padding: $ws-sm;
   width: 100%;
   position: relative;
-  background-color: $blue;
+  // background-color: $blue;
   color: $white;
   margin-bottom: $ws-md;
   a, a:hover{
@@ -1127,14 +1131,15 @@ $icon-length: $block2;
 }
 .question-item-main{
   // background-image: image-url("question_image_whitever1.png");
-  // background-repeat: no-repeat;
-  //   background-size: cover;
-  background: white;
+  background-image: image-url("question_image_blank.png");
+  background-repeat: no-repeat;
+    background-size: cover;
+  // background: white;
   width:100%;
   // margin:0 $ws-sm;
-  height:$block*6;
+  height:420px;
   @include screen($breakpoint-mobile, $breakpoint-tablet) {
-    height:$block*10;
+    height:580px;
   }
   color: $font-color;
   //background-color: $white;
@@ -1155,41 +1160,41 @@ $icon-length: $block2;
     }
 }
 
-.question-item-footer{
-  // position: absolute;
-  // bottom:0;
-  width:100%;
-  color: white;
-  padding: 0px $ws-sm;
-  // min-height: 48px;
-  height:$block;
-  overflow: hidden;
-  // overflow: visible;
-
-  a{
-    color: white;
-  }
-  div{
-    display: inline-block;
-    // width: 45%;
-    padding: $ws-sm;
-    font-size: $font-size-sm;
-  }
-  .question-item-footer-left{
-    text-align: left;
-    img{
-      max-width: 100%;
-      max-height: 100%;
-    }
-  }
-  .question-item-footer-right{
-    text-align: right;
-  }
-
-  .question-item-footer-center{
-    text-align: center;
-  }
-}
+// .question-item-footer{
+//   // position: absolute;
+//   // bottom:0;
+//   width:100%;
+//   color: white;
+//   padding: 0px $ws-sm;
+//   // min-height: 48px;
+//   height:$block;
+//   overflow: hidden;
+//   // overflow: visible;
+//
+//   a{
+//     color: white;
+//   }
+//   div{
+//     display: inline-block;
+//     // width: 45%;
+//     padding: $ws-sm;
+//     font-size: $font-size-sm;
+//   }
+//   .question-item-footer-left{
+//     text-align: left;
+//     img{
+//       max-width: 100%;
+//       max-height: 100%;
+//     }
+//   }
+//   .question-item-footer-right{
+//     text-align: right;
+//   }
+//
+//   .question-item-footer-center{
+//     text-align: center;
+//   }
+// }
 
 
 .page-box{

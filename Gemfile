@@ -111,3 +111,4 @@ gem 'whenever', require: false
 gem "serviceworker-rails"
 gem "rename"
 #gem 'webpush'
+gem 'devise_invitable'
