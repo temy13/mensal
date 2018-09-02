@@ -14,6 +14,5 @@ class ProfileController < ApplicationController
   private
   def set_user
     @user = User.find(params[:id])
-    raise ActionController::RoutingError.new('Not Found') if @user.answer_bot?
   end
 end

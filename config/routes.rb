@@ -2,15 +2,6 @@ require Rails.root.join('lib', 'subdomain.rb')
 
 Rails.application.routes.draw do
 
-  namespace :mecha do
-    get 'top/index'
-  end
-
-  constraints subdomain: 'mecha' do
-    namespace :mecha, path: '/' do
-      root 'top#index'
-    end
-  end
   get 'analysis/index'
 
   # require 'sidekiq/web'
@@ -39,18 +30,24 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "/sign_up" => "devise/registrations#new", as: "new_user_registration" # custom path to sign_up/registration
+    # get "/mensa_sign_up" => "devise/registrations#mensa", as: "mensa_user_registration" # custom path to sign_up/registration
   end
 
   devise_for :users,
-    path_names: { sign_in: "login", sign_out: "logout"},
+    path_names: {
+      sign_in: "login",
+      sign_out: "logout"
+    },
     controllers: {
         omniauth_callbacks: "users/omniauth_callbacks",
-        registrations: 'users/registrations'
+        registrations: 'users/registrations',
+        invitations: 'users/invitations'
     }
 
   get 'home/index'
   get 'home/policy'
   get 'home/terms'
+  get 'home/mensa'
 
   #root to: "devise/sessions#new"
   root to: "home#index"

@@ -83,30 +83,38 @@
           %div#center.max-height
             %div.header
               %nav.row
-                %div.col-4
-                %div.logo.col-4.text-center
-                  -# =render "share/logo"
-                  = "メンサル"
-                %div.d-inline-block.right.col-4
+                %div.col-3
                 - if user_signed_in?
-                  %div.header-button
-                    = link_to 'ログアウト', destroy_user_session_path, method: :delete
+                  %div.logo.col-6
+                    =render "share/logo"
+                  %div.d-inline-block.right.col-3
+                    %div.header-button
+                      = link_to 'ログアウト', destroy_user_session_path, method: :delete
                 - else
-                  %div.header-button
-                    -# = link_to user_twitter_omniauth_authorize_path do
-                    -#   ="登録/ログイン"
+                  %div.logo.col-6
+                    =render "share/logo"
+                  %div.d-inline-block.right.col-3
+                    %div.header-button
+                      = link_to user_twitter_omniauth_authorize_path do
+                        %i.fa.fa-twitter="登録/ログイン"
 
             %div#main-contents.max-height
               = yield
 
             %div.footer
               %ul
+                %li
+                  = link_to "https://twitter.com/bookreptokyo" do
+                    %i.fa.fa-twitter="公式Twitter"
                 %li= link_to "プライバシーポリシー", home_policy_path
                 %li= link_to "利用規約", home_terms_path
                 %li= link_to "ご意見・ご感想・ご要望・お問い合わせ", contacts_new_path
                 %li= link_to "質問一覧", questions_path
                 %li.copyright
-                  %p= "© 2018 hogehoge"
+                  %p= "本との出会いに素敵な偶然を"
+                  %p= "© 2018 bookrep"
+
+        %div.d-lg-block.col-lg-2.d-none
 
     %div#fix-footer
       %div.container
@@ -133,5 +141,3 @@
                     =image_tag('blue_icon_profile.png', { :border => '0', :alt => '質問投稿'})
                   - else
                     = link_to image_tag('icon_profile.png', { :border => '0', :alt => 'プロフィール'}), profile_path(current_user)
-
-        %div.d-lg-block.col-lg-2.d-none

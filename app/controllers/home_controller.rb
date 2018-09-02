@@ -10,4 +10,9 @@ class HomeController < ApplicationController
   def terms
   end
 
+  def mensa
+    @user = User.new()
+    redirect_to controller: 'questions', action: 'index' if user_signed_in?
+  end
+
 end

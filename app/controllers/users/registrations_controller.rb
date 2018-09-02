@@ -15,6 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
   # POST /resource
+
   def create
     build_resource(sign_up_params)
     resource.is_email_notice = true

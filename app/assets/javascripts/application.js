@@ -28,16 +28,16 @@
 
 //= require_tree .
 
-jQuery.fn.exists = function(){return Boolean(this.length > 0);}
+// jQuery.fn.exists = function(){return Boolean(this.length > 0);}
 
 
-$.extend($.ui.autocomplete.prototype.options, {
-	open: function(event, ui) {
-		$(this).autocomplete("widget").css({
-            "width": ($(this).width() + "px")
-        });
-    }
-});
+// $.extend($.ui.autocomplete.prototype.options, {
+// 	open: function(event, ui) {
+// 		$(this).autocomplete("widget").css({
+//             "width": ($(this).width() + "px")
+//         });
+//     }
+// });
 
 $.extend($.validator.messages, {
 		required: "このフィールドは必須です。",

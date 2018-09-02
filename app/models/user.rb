@@ -32,9 +32,10 @@ require 'securerandom'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable#, omniauth_providers: [:twitter]
+         :omniauthable, invite_for: 24.hours
+         #, omniauth_providers: [:twitter]
   has_many :questions
   has_many :answers
   has_many :likes
@@ -44,7 +45,7 @@ class User < ApplicationRecord
   has_many :action_logs
   has_many :push_notification
 
-  as_enum :states, normal: 0, dummy: 1, admin: 2, answer_bot: 3
+  as_enum :states, normal: 0, mensa: 1, admin: 2
 
 
   # before_save :prepare_save

@@ -10,28 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180805020710) do
+ActiveRecord::Schema.define(version: 20180902081244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "action_logs", force: :cascade do |t|
-    t.string "request_method"
-    t.integer "user_id"
-    t.string "path_info"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "remote_ip"
-    t.string "ip"
-  end
-
-  create_table "amazon_tmp_links", force: :cascade do |t|
-    t.string "title"
-    t.bigint "node_id"
-    t.integer "click_count", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "answers", force: :cascade do |t|
     t.integer "user_id"
@@ -42,40 +24,6 @@ ActiveRecord::Schema.define(version: 20180805020710) do
     t.boolean "is_tweet", default: false
     t.boolean "is_anonymous", default: false
     t.integer "score", default: 0
-  end
-
-  create_table "authors", force: :cascade do |t|
-    t.integer "book_id"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "book_click_logs", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "answer_id"
-    t.integer "book_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.string "isbn10"
-    t.string "isbn13"
-    t.string "asin"
-    t.string "google_books_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "subtitle"
-    t.string "google_categories"
-    t.string "rakuten_affiliate_url"
-    t.string "google_description"
-    t.string "vector_json"
-    t.string "rakuten_isbn13"
-    t.string "rakuten_genre_id"
-    t.string "rakuten_caption"
-    t.string "rakuten_title"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -93,16 +41,6 @@ ActiveRecord::Schema.define(version: 20180805020710) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-  create_table "hash_tweets", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "uid"
-    t.string "content"
-    t.datetime "posted"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "tweet_id"
-  end
-
   create_table "likes", force: :cascade do |t|
     t.integer "answer_id"
     t.integer "user_id"
@@ -110,24 +48,6 @@ ActiveRecord::Schema.define(version: 20180805020710) do
     t.datetime "updated_at", null: false
     t.boolean "like", default: false, null: false
     t.index ["user_id", "answer_id"], name: "index_likes_on_user_id_and_answer_id", unique: true
-  end
-
-  create_table "push_notifications", force: :cascade do |t|
-    t.integer "user_id"
-    t.boolean "is_notice", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "endpoint"
-    t.string "p256dh"
-    t.string "auth"
-    t.string "firebase_token"
-  end
-
-  create_table "question_show_logs", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "question_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade do |t|
@@ -139,38 +59,6 @@ ActiveRecord::Schema.define(version: 20180805020710) do
     t.boolean "is_tweet", default: false
     t.string "image"
     t.integer "score", default: 0
-  end
-
-  create_table "requests", force: :cascade do |t|
-    t.integer "question_id"
-    t.string "name"
-    t.string "uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "title_queries", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "query"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "twitter_users", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "tweets"
-    t.integer "followers_count"
-    t.integer "friends_count"
-    t.integer "favolites_count"
-    t.string "description"
-    t.string "screen_name"
-    t.string "uid"
-    t.datetime "last_tweet"
-    t.boolean "get_friends", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "is_follow", default: false
-    t.integer "share_count", default: 0
   end
 
   create_table "users", force: :cascade do |t|
@@ -195,7 +83,19 @@ ActiveRecord::Schema.define(version: 20180805020710) do
     t.boolean "is_email_notice", default: false
     t.integer "states_cd", default: 0
     t.integer "score", default: 0
+    t.string "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer "invitation_limit"
+    t.string "invited_by_type"
+    t.bigint "invited_by_id"
+    t.integer "invitations_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
+    t.index ["invitations_count"], name: "index_users_on_invitations_count"
+    t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
+    t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

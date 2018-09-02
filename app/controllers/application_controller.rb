@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   #before_action :create_action_log
   after_action :store_location
   helper_method :vapid_public_key
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def vapid_public_key
     @decoded_vapid_public_key ||= Base64.urlsafe_decode64(ENV['VAPID_PUBLIC_KEY']).bytes
@@ -59,6 +60,13 @@ class ApplicationController < ActionController::Base
 
   private
 
+
+  def configure_permitted_parameters
+    # :inviteと:accept_invitationに:usernameを許可する
+    devise_parameter_sanitizer.permit(:invite) { |u| u.permit(:email, :username) }
+    devise_parameter_sanitizer.permit(:accept_invitation) { |u| u.permit(:password, :password_confirmation, :invitation_token, :username) }
+
+  end
   # def create_action_log
   #   remote_ip = request.env["HTTP_X_FORWARDED_FOR"] || request.remote_ip
   #   log = ActionLog.new(
